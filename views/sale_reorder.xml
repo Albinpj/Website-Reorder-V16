@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_repeat_sale_order_cart" inherit_id="sale.portal_my_orders">
+        <xpath expr="//th[last()]" position="after">
+            <th class="text-right">Reorder</th>
+        </xpath>
+        <xpath expr="//td[last()]" position="after">
+            <td class="text-right">
+                <a t-attf-href="/order/repeat?id=#{order.id}">
+                    <i class="fa fa-shopping-cart" role="img" style="color: black;"/>
+                </a>
+                <t t-esc="order.id"/>
+            </td>
+        </xpath>
+    </template>
+    <template id="website_repeat_sale_order_button" inherit_id="sale.sale_order_portal_content">
+        <xpath expr="//div[@id='introduction']//h2" position="inside">
+            <a t-attf-href="/order/repeat?id=#{sale_order.id}" style="margin-left: 90%;" class="btn btn-secondary">
+                Reorder
+            </a>
+            <t t-esc="sale_order.id"/>
+        </xpath>
+    </template>
+</odoo>
